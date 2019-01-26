@@ -1,0 +1,50 @@
+Question - 
+You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the row number and column number of the wanted reshaped matrix, respectively.
+
+The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were.
+
+If the 'reshape' operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.
+
+
+
+
+Logic - 
+    Edge cases -  1.when r and c given are not compatible with the dimensions of the given array.
+                  2.when r and c are zero. => mentioned in constraints - r,c > 0. ann if r,c == 0, condition 1 returns false.
+
+
+
+
+class Solution 
+{
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        
+        int n = nums.length;
+        int m = nums[0].length;
+        
+        int[][] res = new int[r][c];
+        
+        if(r*c != n*m)
+            return nums ;
+        
+        int a = 0;
+        int b = 0;
+        
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)
+            {
+                
+                res[a][b] = nums[i][j];
+                b++;
+                
+                if(b == c) //c no of columns and shift to next row 
+                {   
+                    b=0;
+                    a++;
+                }
+            }
+        
+        return res;
+
+    }
+}
