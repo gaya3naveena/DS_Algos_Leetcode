@@ -12,3 +12,61 @@ If there are multiple answers, you may return any one of them.  It is guaranteed
 Input: A = [1,2], B = [2,3]
 Output: [1,2]
 
+
+Constraints:
+1 <= A.length <= 10000
+1 <= B.length <= 10000
+1 <= A[i] <= 100000
+1 <= B[i] <= 100000
+
+Time Complexity:
+O(n^2  Brute force implementation of the logic
+
+
+
+Logic:
+
+Assume a>b 
+a-b = x (difference) 
+
+a has x (x/2 + x/2) more than b 
+swap x/2 from b and x to a => a-(x)+(x/2) = b-(x/2)+(x)
+
+a = b+x 
+so find a candy pair whose diff is exactly x/2 
+
+
+
+
+Solution :
+
+class Solution {
+    public int[] fairCandySwap(int[] A, int[] B)
+    {
+         int sumA = 0;
+         int sumB = 0;
+        
+        for (int i = 0; i < A.length; i++)
+            sumA += A[i];
+        
+        for (int i = 0; i < B.length; i++)
+            sumB += B[i];
+        
+        int dif = (sumA - sumB) / 2;
+        
+        for (int i = 0; i < A.length; i++)
+        {
+            for (int j = 0; j < B.length; j++)
+            {
+                if (A[i] - B[j] == dif)
+                    return new int[]{A[i], B[j]};
+            }
+        }
+        return null;
+        
+    }
+}
+
+Takeaway :
+In sums like these don't think in terms of individual entities and how to manipulate them.
+Combine both and see how you can arrive at a simpler solution.
