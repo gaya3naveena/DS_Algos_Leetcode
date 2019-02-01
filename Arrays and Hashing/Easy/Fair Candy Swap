@@ -67,6 +67,6 @@ class Solution {
     }
 }
 
-Takeaway :
+Takeaway : 
 In sums like these don't think in terms of individual entities and how to manipulate them.
 Combine both and see how you can arrive at a simpler solution.
